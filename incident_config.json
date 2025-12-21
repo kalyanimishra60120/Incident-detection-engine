@@ -1,0 +1,24 @@
+{
+  "ERROR": {
+    "severity": "CRITICAL",
+    "threshold": 5,
+    "window_seconds": 120,
+    "cooldown_seconds": 90,
+    "description": "Repeated application errors indicating service instability"
+  },
+  "login_failed": {
+    "severity": "WARNING",
+    "threshold": 3,
+    "window_seconds": 60,
+    "cooldown_seconds": 60,
+    "description": "Multiple failed login attempts in short time window"
+  },
+  "login_missing_fields": {
+    "severity": "WARNING",
+    "threshold": 5,
+    "window_seconds": 60,
+    "cooldown_seconds": 60,
+    "description": "Invalid client requests missing required fields"
+  }
+}
+

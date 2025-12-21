@@ -1,0 +1,6 @@
+{
+    "ERROR": "CRITICAL",
+    "login_failed": "WARNING",
+    "login_missing_fields": "WARNING",
+    "health_check": "INFO"
+}
