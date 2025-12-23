@@ -51,25 +51,39 @@ An incident is opened only when: Error count ≥ threshold
 All errors occur within the configured time window
 When this happens:A unique incident ID is generated
 Severity, service name, and timestamps are recorded
-
 The incident is marked OPEN
-
 Details are written to incidents.log
-
 Duplicate incidents for the same service + pattern are suppressed.
 
-5. Incident Resolution
-
+## 5. Incident Resolution
 While errors continue, the incident remains open
-
 When no new matching errors occur for the cooldown period:
-
-The incident is marked RESOLVED
-
-Duration is calculated
-
-Resolution is logged
-
+-The incident is marked RESOLVED
+-Duration is calculated
+-Resolution is logged
 This completes the incident lifecycle.
+
+## How to Run the Project
+--Build the Docker Image--
+docker build -t incident-engine .
+
+--Run the System--
+docker run --rm \
+  -p 8000:8000 \
+  -p 8001:8001 \
+  -v "$(pwd)/logs":/app/logs \
+  incident-engine
+
+--Triggering an Incident--
+Trigger Repeated Errors (Test Simulation)
+for i in 1 2 3 4 5
+do
+  curl http://localhost:8000/error
+  sleep 2
+done
+
+## Summary
+This project shows how to design and implement a production-inspired incident detection system using fundamental DevOps principles, emphasizing reliability, clarity, and correctness over tool sprawl.
+
 
 
